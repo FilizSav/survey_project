@@ -23,17 +23,19 @@ public class Survey {
                 scan.nextLine();
 
                 System.out.println(SurveyQuestions.askGender);
-                String gender = scan.nextLine();
+                String gender = scan.nextLine().toLowerCase();
 
             Participant participant = new Participant(name,age,gender);
             participants.add(participant);
-
-            if(gender.toLowerCase().equals("m")) Participant.addMaleParticipants();
-            else Participant.addFemaleParticipants();
             }
         }while (Participant.totalNumberOfParticipants < 3); System.out.println("End of Survey");
 
         System.out.println(participants);
+
+        for (Participant p : participants) {
+            if(p.gender.equals("m")) Participant.addMaleParticipants();
+            else Participant.addFemaleParticipants();
+        }
         System.out.println("Total number of male participants = " + Participant.totalNumberOfMaleParticipants);
         System.out.println("Total number of female participants = " +Participant.totalNumberOfFemaleParticipants);
 
